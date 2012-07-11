@@ -1,0 +1,17 @@
+[xdebug]
+zend_extension=<%= `find /usr/lib/ -name "xdebug.so" | tr -d "\n"` %>
+xdebug.cli_color = 1
+; xdebug.scream = 1
+
+[xdebug-remote-debug]
+xdebug.remote_enable = On
+xdebug.remote_autostart = 1
+xdebug.remote_mode = req
+xdebug.remote_connect_back = 1
+xdebug.idekey = macgdbp
+xdebug.file_link_format="txmt://open?url=file://%f&line=%1"
+
+[xdebug-profiling]
+; xdebug.profiler_enable_trigger = 1
+; xdebug.profiler_enable = 1
+; xdebug.profiler_output_dir = /mnt/hgfs/src/cachegrind
