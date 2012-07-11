@@ -23,37 +23,71 @@ The following Opscode cookbooks are dependencies:
 
 ## default
 
+The default recipe does not execute any funcitonality.
+
 ## development
+
+Installs and configures a standard set of tools used in development of PHP projects. This will install the standard set of static code analysis tools for PHP as well as testing and quality assurance tools.
 
 ## module_dev
 
+Installs the php5_dev module that is required by xdebug.
+
 ## module_soap
+
+Installs php5_soap as it is a commonly used module that is not part of the Opscode PHP module.
 
 ## module_xml
 
+Installs php5_xml as it is a commonly used module that is not part of the Opscode PHP module.
+
 ## pear
+
+Upgrades PEAR using PEAR.
 
 ## PHP_CodeBrowser
 
+Installs PHP_CodeBrowser with PEAR so that is can be used to generate a GUI to interact with the source code and static code analysis results.
+
 ## PHP_CodeSniffer
+
+Installs PHP_CodeSniffer using PEAR with the standard sniffs PEAR and Zend.
 
 ## PHP_Depend
 
+Installs PHP_Depend with PEAR so that it can be used in Jenkins.
+
 ## PHP_PMD
+
+Installs PHP_PMD with PEAR so that it can be used in Jenkins.
 
 ## phpcpd
 
+Installs phpcpd which allows you to identify and duplicate code within your PHP project.
+
 ## PhpDocumentor
+
+Installs PhpDocumentor so that you can generate API documentation for you code.
 
 ## phploc
 
+Installs phploc so that you can gather statistics about your PHP code.
+
 ## PHPUnit
+
+Installs PHPUnit and dependencies for unit testing your PHP code.
 
 ## vfsStream
 
+Installs vfsStream which allows you to create mock file system resources for unit testing.
+
 ## xdebug
 
+Installs and configures xdebug so that it provides more details stack traces for any error output. xdebug is configured to connect back to a debugger at the host machine initiating the request.
+
 ## zendframework
+
+Installs the latest build of Zend Framework 1.x as system wide resource with PEAR.
 
 # Usage
 
