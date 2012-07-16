@@ -33,13 +33,17 @@ Installs and configures a standard set of tools used in development of PHP proje
 
 Installs the php5_dev module that is required by xdebug.
 
+## module_mcrypt
+
+Install the php5_mcrypt module that is commonly used but not part of the Opscode PHP cookbook
+
 ## module_soap
 
-Installs php5_soap as it is a commonly used module that is not part of the Opscode PHP module.
+Installs php5_soap as it is a commonly used module that is not part of the Opscode PHP cookbook.
 
 ## module_xml
 
-Installs php5_xml as it is a commonly used module that is not part of the Opscode PHP module.
+Installs php5_xml as it is a commonly used module that is not part of the Opscode PHP cookbook.
 
 ## pear
 
