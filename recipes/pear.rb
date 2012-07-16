@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe "php"
+
 execute "upgrade-pear" do
   command "pear upgrade pear | cat" # piping through cat appears to be the only sane way of stopping pear returning exit code 1 on no upgrade
 end

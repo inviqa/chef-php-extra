@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe "php"
+
 if File.exists?("/etc/yum.repos.d/ius.repo")
     packages = %w{ php53u-devel }
 else

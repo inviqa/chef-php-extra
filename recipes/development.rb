@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+include_recipe "php"
 include_recipe "chef-php-extra::module_dev"
 include_recipe "chef-php-extra::PHP_CodeBrowser"
 include_recipe "chef-php-extra::PHP_CodeSniffer"
