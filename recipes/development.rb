@@ -18,7 +18,6 @@
 #
 
 include_recipe "chef-php-extra::module_dev"
-include_recipe "chef-php-extra::PHP_CodeBrowser"
 include_recipe "chef-php-extra::PHP_CodeSniffer"
 include_recipe "chef-php-extra::PHP_PMD"
 include_recipe "chef-php-extra::phpcpd"
