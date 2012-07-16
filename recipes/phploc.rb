@@ -34,7 +34,7 @@ pu = php_pear_channel "pear.phpunit.de" do
 end
 
 php_pear "phploc" do
-    preferred_state "stable"
+    version "1.6.4"
     channel pu.channel_name
     action :install
 end

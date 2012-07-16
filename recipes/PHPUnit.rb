@@ -35,7 +35,7 @@ pu = php_pear_channel "pear.phpunit.de" do
 end
 
 php_pear "PHPUnit" do
-    preferred_state "stable"
+    version "3.6.11"
     channel pu.channel_name
     action :install
 end

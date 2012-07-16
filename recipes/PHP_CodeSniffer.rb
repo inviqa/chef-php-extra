@@ -20,5 +20,6 @@
 include_recipe "chef-php-extra::pear"
 
 php_pear "PHP_CodeSniffer" do
+  version "1.3.5"
   action :install
 end

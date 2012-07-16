@@ -34,6 +34,7 @@ pu = php_pear_channel "pear.phpunit.de" do
 end
 
 php_pear "phpcpd" do
+    version "1.3.5"
     channel pu.channel_name
     action :install
 end

@@ -24,7 +24,7 @@ pd = php_pear_channel "pear.pdepend.org" do
 end
 
 php_pear "PHP_Depend" do
-    preferred_state "stable"
+    version "1.0.7"
     channel pd.channel_name
     action :install
 end

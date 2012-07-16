@@ -36,7 +36,7 @@ pu = php_pear_channel "pear.phpunit.de" do
 end
 
 php_pear "PHP_CodeBrowser" do
-  preferred_state "stable"
+  version "1.2.7"
   channel pu.channel_name
   action :install
 end

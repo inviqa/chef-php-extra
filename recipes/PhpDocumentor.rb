@@ -20,6 +20,6 @@
 include_recipe "chef-php-extra::pear"
 
 php_pear "PhpDocumentor" do
-  preferred_state "stable"
+  version "1.4.4"
   action :install
 end
