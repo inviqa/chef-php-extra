@@ -36,7 +36,7 @@ pu = php_pear_channel "pear.phpunit.de" do
 end
 
 php_pear "PHP_CodeBrowser" do
-  version "1.2.7"
+  version "1.0.2"
   channel pu.channel_name
   action :install
 end
