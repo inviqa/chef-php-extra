@@ -40,9 +40,6 @@ pkgs.each do |pkg|
   end
 end
 
-cookbook_file "#{node['php']['ext_conf_dir']}/mcrypt.ini" do
-  owner "root"
-  group "root"
+template "#{node['php']['ext_conf_dir']}/mcrypt.ini" do
   mode "0644"
-  source "mcrypt.ini"
 end
