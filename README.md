@@ -23,7 +23,7 @@ The following Opscode cookbooks are dependencies:
 
 ## default
 
-The default recipe does not execute any funcitonality.
+Install the additional PHP modules not part of the Opscode cookbook.
 
 ## development
 
@@ -32,6 +32,10 @@ Installs and configures a standard set of tools used in development of PHP proje
 ## module_dev
 
 Installs the php5_dev module that is required by xdebug.
+
+## module_imagick
+
+Installs the php5_imagick module used for image processing.
 
 ## module_mcrypt
 

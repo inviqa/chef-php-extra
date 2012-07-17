@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-php-extra
-# Recipe:: default
+# Recipe:: module_imagick
 #
 # Copyright 2012, Alistair Stead
 #
@@ -17,9 +17,23 @@
 # limitations under the License.
 #
 
-include_recipe "php"
-include_recipe "chef-php-extra::module_dev"
-include_recipe "chef-php-extra::module_imagick"
-include_recipe "chef-php-extra::module_mcrypt"
-include_recipe "chef-php-extra::module_soap"
-include_recipe "chef-php-extra::module_xml"
+if File.exists?("/etc/yum.repos.d/ius.repo")
+    packages = %w{ php53u-imagick }
+else
+    packages = %w{ php53-imagick }
+end
+
+pkgs = value_for_platform(
+  [ "centos", "redhat", "fedora" ] => {
+    "default" => packages
+  },
+  [ "debian", "ubuntu" ] => {
+    "default" => %w{ php5-imagick }
+  }
+)
+
+pkgs.each do |pkg|
+  package pkg do
+    action :install
+  end
+end
