@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-php-extra
-# Recipe:: default
+# Recipe:: module_xml
 #
 # Copyright 2012, Alistair Stead
 #
@@ -17,14 +17,29 @@
 # limitations under the License.
 #
 
-case node['platform']
-when "redhat", "centos", "fedora"
-  include_recipe "chef-php-extra::package"
-when "ubuntu", "debian"
-  include_recipe "php"
+include_recipe "chef-php-extra"
+
+if node.platform_version.to_f < 6.0
+  if File.exists?("/etc/yum.repos.d/ius.repo")
+      packages = %w{ php53u-mysql }
+  else
+      packages = %w{ php53-mysql }
+  end
+else
+  packages = %w{ php-mysql }
 end
 
-include_recipe "chef-php-extra::module_dev"
-include_recipe "chef-php-extra::module_mcrypt"
-include_recipe "chef-php-extra::module_soap"
-include_recipe "chef-php-extra::module_xml"
+pkgs = value_for_platform(
+  [ "centos", "redhat", "fedora" ] => {
+    "default" => packages
+  },
+  [ "debian", "ubuntu" ] => {
+    "default" => %w{ php5-mysql }
+  }
+)
+
+pkgs.each do |pkg|
+  package pkg do
+    action :install
+  end
+end

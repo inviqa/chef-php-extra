@@ -17,10 +17,16 @@
 # limitations under the License.
 #
 
-if File.exists?("/etc/yum.repos.d/ius.repo")
-    packages = %w{ php53u-xml }
+include_recipe "chef-php-extra"
+
+if node.platform_version.to_f < 6.0
+  if File.exists?("/etc/yum.repos.d/ius.repo")
+      packages = %w{ php53u-xml }
+  else
+      packages = %w{ php53-xml }
+  end
 else
-    packages = %w{ php53-xml }
+  packages = %w{ php-xml }
 end
 
 pkgs = value_for_platform(

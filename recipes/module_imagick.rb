@@ -17,10 +17,16 @@
 # limitations under the License.
 #
 
-if File.exists?("/etc/yum.repos.d/ius.repo")
-    packages = %w{ php53u-imagick }
+include_recipe "chef-php-extra"
+
+if node.platform_version.to_f < 6.0
+  if File.exists?("/etc/yum.repos.d/ius.repo")
+      packages = %w{ php53u-imagick }
+  else
+      packages = %w{ php53-imagick }
+  end
 else
-    packages = %w{ php53-imagick }
+  packages = %w{ php-imagick }
 end
 
 pkgs = value_for_platform(

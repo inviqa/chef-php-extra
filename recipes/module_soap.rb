@@ -17,13 +17,16 @@
 # limitations under the License.
 #
 
+include_recipe "chef-php-extra"
 
-include_recipe "php"
-
-if File.exists?("/etc/yum.repos.d/ius.repo")
-    packages = %w{ php53u-soap }
+if node.platform_version.to_f < 6.0
+  if File.exists?("/etc/yum.repos.d/ius.repo")
+      packages = %w{ php53u-soap }
+  else
+      packages = %w{ php53-soap }
+  end
 else
-    packages = %w{ php53-soap }
+  packages = %w{ php-soap }
 end
 
 pkgs = value_for_platform(

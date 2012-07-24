@@ -2,6 +2,8 @@
 
 Installs and configures additional PHP modules and PEAR packages that are commonly used but not part of the Opscode Cookbooks. This includes additional tools that are used during development for quality assurance and testing.
 
+**This cookbook now adds support for CentOS 6.* and correct package names. Use this chef-php-extra::default instead of php::default to ensure compatibility with CentOS 6.*.**
+
 # Requirements
 
 Chef 0.10.0 or higher required (for Chef environment use).

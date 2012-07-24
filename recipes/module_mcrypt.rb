@@ -17,12 +17,20 @@
 # limitations under the License.
 #
 
-include_recipe "php"
+include_recipe "chef-php-extra"
 
-if File.exists?("/etc/yum.repos.d/ius.repo")
-    packages = %w{ php53u-mcrypt }
+if platform?("redhat", "centos", "fedora")
+  include_recipe "yum::ius"
+end
+
+if node.platform_version.to_f < 6.0
+  if File.exists?("/etc/yum.repos.d/ius.repo")
+      packages = %w{ php53u-mcrypt }
+  else
+      packages = %w{ php-mcrypt }
+  end
 else
-    packages = %w{ php-mcrypt }
+  packages = %w{ php-mcrypt }
 end
 
 pkgs = value_for_platform(
