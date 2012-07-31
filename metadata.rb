@@ -14,6 +14,7 @@ end
 recipe "chef-php-extra", "No default install"
 recipe "chef-php-extra::development", "Install development tools"
 recipe "chef-php-extra::module_dev", "Install additional module"
+recipe "chef-php-extra::module_gd", "Install additional module"
 recipe "chef-php-extra::module_imagick", "Install additional module"
 recipe "chef-php-extra::module_mcrypt", "Install additional module"
 recipe "chef-php-extra::module_soap", "Install additional module soap"

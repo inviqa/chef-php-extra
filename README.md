@@ -35,6 +35,11 @@ Installs and configures a standard set of tools used in development of PHP proje
 
 Installs the php5_dev module that is required by xdebug.
 
+## module_gd
+
+Installs the php5_gd module adding support for CentOS 6.* and correct package selection.
+
+
 ## module_imagick
 
 Installs the php5_imagick module used for image processing.
