@@ -34,7 +34,7 @@ pkgs = value_for_platform(
     "default" => packages
   },
   [ "debian", "ubuntu" ] => {
-    "default" => %w{ php-gd }
+    "default" => %w{ php5-gd }
   }
 )
 
