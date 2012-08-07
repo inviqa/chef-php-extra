@@ -28,8 +28,8 @@ The following Opscode cookbooks are dependencies:
 Provides `install_composer` and `install_packages` actions which install composer in the directory provided, and installs the project's dependencies.
 
 ```ruby
-php_composer "/path/to/project/dir" do
-  action :install_composer
+chef_php_extra_composer "/path/to/project/dir" do
+  action [:install_composer, :install_packages]
 end
 ```
 
