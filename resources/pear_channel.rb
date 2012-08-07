@@ -1,8 +1,9 @@
 #
-# Cookbook Name:: chef-php-extra
-# Recipe:: xdebug
+# Author:: Seth Chisamore <schisamo@opscode.com>
+# Cookbook Name:: php
+# Resource:: pear_channel
 #
-# Copyright 2012, Alistair Stead
+# Copyright:: 2011, Opscode, Inc <legal@opscode.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,14 +18,11 @@
 # limitations under the License.
 #
 
-include_recipe "chef-php-extra::pear"
+actions :discover, :add, :update, :remove
 
-pat = chef_php_extra_pear_channel "pear.bovigo.org" do
-    action :discover
-end
+attribute :channel_name, :kind_of => String, :name_attribute => true
+attribute :channel_xml, :kind_of => String
 
-chef_php_extra_pear "vfsStream" do
-    preferred_state "beta"
-    channel pat.channel_name
-    action :install
-end
+# TODO add authenticated channel support!
+# attribute :username, :kind_of => String
+# attribute :password, :kind_of => String
