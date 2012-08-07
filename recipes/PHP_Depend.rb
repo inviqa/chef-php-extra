@@ -19,11 +19,11 @@
 
 include_recipe "chef-php-extra::pear"
 
-pd = php_pear_channel "pear.pdepend.org" do
+pd = chef_php_extra_pear_channel "pear.pdepend.org" do
   action :discover
 end
 
-php_pear "PHP_Depend" do
+chef_php_extra_pear "PHP_Depend" do
     version "1.0.7"
     channel pd.channel_name
     action :install
