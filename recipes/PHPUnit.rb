@@ -25,16 +25,16 @@ channels = [
 ]
 
 channels.each do |chan|
-  php_pear_channel chan do
+  chef_php_extra_pear_channel chan do
     action :discover
   end
 end
 
-pu = php_pear_channel "pear.phpunit.de" do
+pu = chef_php_extra_pear_channel "pear.phpunit.de" do
   action :discover
 end
 
-php_pear "PHPUnit" do
+chef_php_extra_pear "PHPUnit" do
     version "3.6.11"
     channel pu.channel_name
     action :install
