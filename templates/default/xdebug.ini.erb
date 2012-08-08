@@ -1,17 +1,17 @@
 [xdebug]
-zend_extension=<%= `find /usr/lib/ -name "xdebug.so" | tr -d "\n"` %>
-xdebug.cli_color = 1
-; xdebug.scream = 1
+zend_extension=<%= `find /usr -name "xdebug.so" | tr -d "\n"` %>
+xdebug.cli_color = <%= node[:xdebug][:cli_color] %>
+xdebug.scream = <%= node[:xdebug][:scream] %>
 
 [xdebug-remote-debug]
-xdebug.remote_enable = On
-xdebug.remote_autostart = 1
-xdebug.remote_mode = req
-xdebug.remote_connect_back = 1
-xdebug.idekey = macgdbp
-xdebug.file_link_format="txmt://open?url=file://%f&line=%1"
+xdebug.remote_enable = <%= node[:xdebug][:remote_enable] %>
+xdebug.remote_autostart = <%= node[:xdebug][:remote_autostart] %>
+xdebug.remote_mode = <%= node[:xdebug][:remote_mode] %>
+xdebug.remote_connect_back = <%= node[:xdebug][:remote_connect_back] %>
+xdebug.idekey = <%= node[:xdebug][:idekey] %>
+xdebug.file_link_format="<%= node[:xdebug][:file_link_format] %>"
 
 [xdebug-profiling]
-; xdebug.profiler_enable_trigger = 1
-; xdebug.profiler_enable = 1
-; xdebug.profiler_output_dir = /mnt/hgfs/src/cachegrind
+xdebug.profiler_enable_trigger = <%= node[:xdebug][:profiler_enable_trigger] %>
+xdebug.profiler_enable = <%= node[:xdebug][:profiler_enable] %>
+xdebug.profiler_output_dir = <%= node[:xdebug][:profiler_output_dir] %>
