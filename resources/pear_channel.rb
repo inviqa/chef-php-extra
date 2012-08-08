@@ -18,6 +18,17 @@
 # limitations under the License.
 #
 
+# Chef 0.10.10 or greater
+default_action :discover
+
+# In earlier versions of Chef the LWRP DSL doesn't support specifying
+# a default action, so you need to drop into Ruby.
+def initialize(*args)
+  super
+  @action = :discover
+end
+
+
 actions :discover, :add, :update, :remove
 
 attribute :channel_name, :kind_of => String, :name_attribute => true

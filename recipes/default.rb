@@ -18,7 +18,7 @@
 #
 
 case node['platform']
-when "redhat", "centos", "fedora"
+when "redhat", "centos", "fedora", "amazon", "scientific"
   include_recipe "chef-php-extra::package"
 when "ubuntu", "debian"
   include_recipe "php"
