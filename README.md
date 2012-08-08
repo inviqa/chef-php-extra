@@ -4,7 +4,7 @@ Installs and configures additional PHP modules and PEAR packages that are common
 
 **This cookbook now adds support for CentOS 6.* and correct package names. Use this chef-php-extra::default instead of php::default to ensure compatibility with CentOS 6.*.**
 
-[![Build Status](https://secure.travis-ci.org/inviqa/chef-php-extra.png?branch=master,develop)](http://travis-ci.org/inviqa/chef-php-extra)
+[![Build Status](https://secure.travis-ci.org/inviqa/chef-php-extra.png?branch=master)](http://travis-ci.org/inviqa/chef-php-extra)
 
 # Requirements
 
