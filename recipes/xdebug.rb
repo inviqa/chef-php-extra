@@ -26,7 +26,7 @@ include_recipe "chef-php-extra::module_dev"
 
 if platform?(%w{debian ubuntu})
     package "php5-xdebug"
-elsif platform?(%w{centos redhat fedora})
+elsif platform?(%w{centos redhat fedora amazon scientific})
   php_pear "xdebug" do
     action :install
   end

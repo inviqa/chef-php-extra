@@ -21,20 +21,20 @@ action :install_composer do
     raise "#{new_resource.project_path} is not a directory"
   end
 
-  if !::File.exists?("#{new_resource.project_path}/composer.phar")
-    remote_file "#{new_resource.project_path}/composer.phar" do
-      source "http://getcomposer.org/composer.phar"
-      mode "0774"
-    end
+  remote_file "#{new_resource.project_path}/composer.phar" do
+    source "http://getcomposer.org/composer.phar"
+    mode "0774"
+    not_if !::File.exists?("#{new_resource.project_path}/composer.phar")
   end
+  new_resource.updated_by_last_action(true)
 end
 
 action :install_packages do
-  if ::File.exists?("#{new_resource.project_path}/composer.json")
-    execute "install dependencies with composer" do
-      cwd new_resource.project_path
-      user "root"
-      command "php composer.phar install"
-    end
+  execute "install dependencies with composer #{new_resource.name}" do
+    cwd new_resource.project_path
+    user "root"
+    command "php composer.phar install"
+    only_if ::File.exists?("#{new_resource.project_path}/composer.json")
   end
+  new_resource.updated_by_last_action(true)
 end

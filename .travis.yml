@@ -1,0 +1,7 @@
+language: ruby
+gemfile:
+   - test/support/Gemfile.ci
+rvm:
+  - 1.9.2
+  - 1.9.3
+script: BUNDLE_GEMFILE=test/support/Gemfile.ci bundle exec rake foodcritic

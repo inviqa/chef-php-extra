@@ -5,7 +5,9 @@ description      "Installs/Configures additional PHP modules, PEAR and PECL pack
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.2"
 
+depends "yum"
 depends "php"
+depends "chef-php-extra"
 
 %w{ ubuntu, debian, centos, redhat, fedora }.each do |os|
   supports os

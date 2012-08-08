@@ -1,4 +1,4 @@
-if node.platform_version.to_f < 6.0
+if node['platform_version'].to_f < 6.0
   centos_packages = %w{ php53 php53-devel php53-cli php-pear }
 else
   centos_packages = %w{ php php-devel php-cli php-pear }
