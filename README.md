@@ -19,6 +19,9 @@ Chef 0.10.12 or higher required (for Chef environment use).
 
 The following Opscode cookbooks are dependencies:
 
+* git
+* yum
+* apt
 * php
 
 # Attributes
@@ -117,6 +120,10 @@ Installs phploc so that you can gather statistics about your PHP code.
 ## PHPUnit
 
 Installs PHPUnit and dependencies for unit testing your PHP code.
+
+## predis
+
+Installs the php redis extension configure and make install from source after a checkout from GitHub from the master branch
 
 ## vfsStream
 
