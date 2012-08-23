@@ -19,7 +19,7 @@
 
 include_recipe "chef-php-extra::pear"
 
-php_pear "PhpDocumentor" do
+chef_php_extra_pear "PhpDocumentor" do
   version "1.4.4"
   action :install
 end

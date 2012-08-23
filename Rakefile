@@ -1,25 +1,59 @@
-desc "Runs foodcritic"
-task :foodcritic do
-  if Gem::Version.new("1.9.2") <= Gem::Version.new(RUBY_VERSION.dup)
-    sandbox = File.join(File.dirname(__FILE__), %w{tmp foodcritic cookbook})
-    prepare_foodcritic_sandbox(sandbox)
+#!/usr/bin/env rake
 
-    sh "foodcritic --epic-fail any #{File.dirname(sandbox)}"
+# Don't output shell commands for fileutils
+Rake::FileUtilsExt.verbose(false)
+
+# Helpers
+def sandbox_path
+  File.join(File.dirname(__FILE__), %W(tmp cookbooks #{cookbook_name}))
+end
+
+def cookbook_name
+  File.basename(File.dirname(__FILE__))
+end
+
+# test task
+desc 'Run the default tests'
+task :test =>  ['prepare_sandbox', 'knife', 'foodcritic']
+
+# default task (test)
+task :default => :test
+
+# knife test
+desc 'Runs knife cookbook test'
+task :knife do
+  Rake::Task[:prepare_sandbox].invoke
+
+  sh "bundle exec knife cookbook test #{cookbook_name} -o #{sandbox_path}/../"
+end
+
+# foodcritic
+desc 'Runs foodcritic linter'
+task :foodcritic do
+  Rake::Task[:prepare_sandbox].invoke
+
+  if Gem::Version.new("1.9.2") <= Gem::Version.new(RUBY_VERSION.dup)
+    if sh "foodcritic -C -f any #{sandbox_path}"
+      puts 'foodcritic tests passed!'
+    end
   else
-    STDERR.puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
+    puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
   end
 end
 
-task :default => "foodcritic"
+# sandbox helper
+task :prepare_sandbox do
+  files = %w{*.md *.rb attributes definitions files providers recipes resources spec templates test}
 
-private
+  rm_rf sandbox_path
+  mkdir_p sandbox_path
+  cp_r Dir.glob("{#{files.join(',')}}"), sandbox_path
+end
 
-def prepare_foodcritic_sandbox(sandbox)
-  files = %w{*.md *.rb attributes definitions files providers
-recipes resources templates}
-
-  rm_rf sandbox
-  mkdir_p sandbox
-  cp_r Dir.glob("{#{files.join(',')}}"), sandbox
-  puts "\n\n"
+# RSpec - this needs to be last!
+require 'rspec/core/rake_task'
+desc 'Run specs'
+RSpec::Core::RakeTask.new do |t|
+  Rake::Task[:prepare_sandbox].invoke
+  t.pattern = File.join(sandbox_path, 'spec/**/*_spec.rb')
 end
