@@ -20,8 +20,8 @@
 include_recipe "git"
 
 directory "/tmp/phpredis" do
-  owner "vagrant"
-  group "vagrant"
+  owner "root"
+  group "root"
   mode "0755"
   action :create
 end

@@ -1,17 +1,17 @@
 [xdebug]
 zend_extension=<%= `find /usr -name "xdebug.so" | tr -d "\n"` %>
-xdebug.cli_color = <%= node[:xdebug][:cli_color] %>
-xdebug.scream = <%= node[:xdebug][:scream] %>
+xdebug.cli_color = <%= @params['cli_color'] %>
+xdebug.scream = <%= @params['scream'] %>
 
 [xdebug-remote-debug]
-xdebug.remote_enable = <%= node[:xdebug][:remote_enable] %>
-xdebug.remote_autostart = <%= node[:xdebug][:remote_autostart] %>
-xdebug.remote_mode = <%= node[:xdebug][:remote_mode] %>
-xdebug.remote_connect_back = <%= node[:xdebug][:remote_connect_back] %>
-xdebug.idekey = <%= node[:xdebug][:idekey] %>
-xdebug.file_link_format="<%= node[:xdebug][:file_link_format] %>"
+xdebug.remote_enable = <%= @params['remote_enable'] %>
+xdebug.remote_autostart = <%= @params['remote_autostart'] %>
+xdebug.remote_mode = <%= @params['remote_mode'] %>
+xdebug.remote_connect_back = <%= @params['remote_connect_back'] %>
+xdebug.idekey = <%= @params['idekey'] %>
+xdebug.file_link_format="<%= @params['file_link_format'] %>"
 
 [xdebug-profiling]
-xdebug.profiler_enable_trigger = <%= node[:xdebug][:profiler_enable_trigger] %>
-xdebug.profiler_enable = <%= node[:xdebug][:profiler_enable] %>
-xdebug.profiler_output_dir = <%= node[:xdebug][:profiler_output_dir] %>
+xdebug.profiler_enable_trigger = <%= @params['profiler_enable_trigger'] %>
+xdebug.profiler_enable = <%= @params['profiler_enable'] %>
+xdebug.profiler_output_dir = <%= @params['profiler_output_dir'] %>
