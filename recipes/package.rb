@@ -1,12 +1,6 @@
-if node['platform_version'].to_f < 6.0
-  centos_packages = %w{ php53 php53-devel php53-cli php-pear }
-else
-  centos_packages = %w{ php php-devel php-cli php-pear }
-end
-
 pkgs = value_for_platform(
   [ "centos", "redhat", "fedora" ] => {
-    "default" => centos_packages
+    "default" => %w{ php53 php53-devel php53-cli php-pear }
   },
   [ "debian", "ubuntu" ] => {
     "default" => %w{ php5-cgi php5 php5-dev php5-cli php-pear }
