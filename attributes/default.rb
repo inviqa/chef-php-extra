@@ -9,3 +9,4 @@ default['xdebug']['file_link_format'] = "txmt://open?url=file://%f&line=%1"
 default['xdebug']['profiler_enable_trigger'] = 0
 default['xdebug']['profiler_enable'] = 0
 default['xdebug']['profiler_output_dir'] = "/tmp/cachegrind"
+default['php']['ius'] = "5.3"

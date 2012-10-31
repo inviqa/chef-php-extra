@@ -19,12 +19,10 @@
 
 include_recipe "chef-php-extra"
 
-if node['platform_version'].to_f < 6.0
-  if File.exists?("/etc/yum.repos.d/ius.repo")
-      packages = %w{ php53u-imagick }
-  else
-      packages = %w{ php53-imagick }
-  end
+if node['php']['ius'] == "5.4"
+  packages = %w{ php54-imagick }
+elsif node['php']['ius'] == "5.3"
+  packages = %w{ php53u-imagick }
 else
   packages = %w{ php-imagick }
 end
