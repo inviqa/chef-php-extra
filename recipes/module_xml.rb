@@ -19,14 +19,12 @@
 
 include_recipe "chef-php-extra"
 
-if node['platform_version'].to_f < 6.0
-  if File.exists?("/etc/yum.repos.d/ius.repo")
+if node['php']['ius'] == "5.4"
+      packages = %w{ php54-xml }
+elsif node['php']['ius'] == "5.3"
       packages = %w{ php53u-xml }
-  else
-      packages = %w{ php53-xml }
-  end
 else
-  packages = %w{ php-xml }
+      packages = %w{ php-xml }
 end
 
 pkgs = value_for_platform(

@@ -19,18 +19,12 @@
 
 include_recipe "chef-php-extra"
 
-if platform?("redhat", "centos", "fedora", "amazon", "scientific")
-  include_recipe "yum::ius"
-end
-
-if node['platform_version'].to_f < 6.0
-  if File.exists?("/etc/yum.repos.d/ius.repo")
+if node['php']['ius'] == "5.4"
+      packages = %w{ php54-mcrypt }
+elsif node['php']['ius'] == "5.3"
       packages = %w{ php53u-mcrypt }
-  else
-      packages = %w{ php-mcrypt }
-  end
 else
-  packages = %w{ php-mcrypt }
+      packages = %w{ php-mcrypt }
 end
 
 pkgs = value_for_platform(
