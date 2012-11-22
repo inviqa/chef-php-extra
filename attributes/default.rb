@@ -16,7 +16,7 @@ default['xcache']['zend_extension'] = '/usr/lib64/php/modules/xcache.so'
 
 default['xcache']['admin.auth'] = 'On'
 default['xcache']['admin.user'] = 'admin'
-default['xcache']['admin.pass' = ''
+default['xcache']['admin.pass'] = ''
 default['xcache']['test'] = 'Off'
 default['xcache']['cacher'] = 'On'
 default['xcache']['size'] = '256M'
