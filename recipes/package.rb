@@ -1,5 +1,11 @@
-if node['platform_version'].to_f < 6.0
-  centos_packages = %w{ php53 php53-devel php53-cli php-pear }
+if node['php']['ius'] != false and platform?("redhat", "centos", "fedora", "amazon", "scientific")
+  include_recipe "yum::ius"
+end
+
+if node['php']['ius'] == "5.4"
+  centos_packages = %w{ php54 php54-devel php54-cli php54-pear }
+elsif node['php']['ius'] == "5.3"
+  centos_packages = %w{ php53u php53u-devel php53u-cli php53u-pear }
 else
   centos_packages = %w{ php php-devel php-cli php-pear }
 end

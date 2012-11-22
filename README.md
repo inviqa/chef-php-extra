@@ -37,6 +37,7 @@ The following Opscode cookbooks are dependencies:
 * `['xdebug']['profiler_enable_trigger']` = Defaults to `0`.
 * `['xdebug']['profiler_enable']` = Defaults to `0`.
 * `['xdebug']['profiler_output_dir']` = Defaults to `/tmp/cachegrind`.
+* `['php']['ius']` = Defaults to `5.3`.
 
 # Providers
 
@@ -59,6 +60,10 @@ Install the additional PHP modules not part of the Opscode cookbook.
 ## development
 
 Installs and configures a standard set of tools used in development of PHP projects. This will install the standard set of static code analysis tools for PHP as well as testing and quality assurance tools.
+
+## package
+
+Installs the php5 package. The version can be controlled on yum based systems using the `['php']['ius']` value. Possible vaulues are '5.4', '5.3' or false (to install the latest php package from the default repository).
 
 ## module_dev
 
@@ -149,7 +154,9 @@ If you are setting up a development environment you can use the single recipe th
 
 # License and Author
 
-Author:: Alistair Stead (alistair@inviqa.com) Author:: Marcello Duarte (marcello@inviqa.com)
+Author:: Alistair Stead (alistair@inviqa.com)
+Author:: Marcello Duarte (marcello@inviqa.com)
+Author:: Ben Longden (blongden@inviqa.com)
 
 Copyright 2012, Inviqa
 
