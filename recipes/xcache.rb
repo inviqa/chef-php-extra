@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: chef-php-extra
-# Recipe:: module_xml
+# Recipe:: xcache
 #
-# Copyright 2012, Alistair Stead
+# Copyright 2012, Marco Lopes
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,14 +17,13 @@
 # limitations under the License.
 #
 
+
 include_recipe "chef-php-extra"
 
 if node['php']['ius'] == "5.4"
-      packages = %w{ php54-mysql }
-elsif node['php']['ius'] == "5.3"
-      packages = %w{ php53u-mysql }
-else
-      packages = %w{ php-mysql }
+    packages = %w{ pphp54-xcache }
+else node['php']['ius'] == "5.3"
+    packages = %w{ php53u-xcache }
 end
 
 pkgs = value_for_platform(
@@ -32,7 +31,7 @@ pkgs = value_for_platform(
     "default" => packages
   },
   [ "debian", "ubuntu" ] => {
-    "default" => %w{ php5-mysql }
+    "default" => %w{ php-xcache }
   }
 )
 
@@ -40,4 +39,11 @@ pkgs.each do |pkg|
   package pkg do
     action :install
   end
+end
+
+template "#{node['php']['ext_conf_dir']}/xcache.ini" do
+  mode "0644"
+  variables(
+    :params => node['xcache']
+  )
 end

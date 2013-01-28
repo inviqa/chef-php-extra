@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-php-extra
-# Recipe:: module_xml
+# Recipe:: module_memcache
 #
 # Copyright 2012, Alistair Stead
 #
@@ -20,19 +20,19 @@
 include_recipe "chef-php-extra"
 
 if node['php']['ius'] == "5.4"
-      packages = %w{ php54-mysql }
+      packages = %w{ php54-memcache }
 elsif node['php']['ius'] == "5.3"
-      packages = %w{ php53u-mysql }
+      packages = %w{ php53u-memcache }
 else
-      packages = %w{ php-mysql }
+      packages = %w{ php-memcache }
 end
 
 pkgs = value_for_platform(
-  [ "centos", "redhat", "fedora" ] => {
+  [ "centos", "redhat", "fedora", "amazon", "scientific" ] => {
     "default" => packages
   },
   [ "debian", "ubuntu" ] => {
-    "default" => %w{ php5-mysql }
+    "default" => %w{ php5-memcache }
   }
 )
 
