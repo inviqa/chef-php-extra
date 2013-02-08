@@ -8,7 +8,7 @@ version          "0.0.2"
 depends "git", "= 1.0.0"
 depends "yum", "= 0.8.0"
 depends "apt", "= 1.4.6"
-depends "php", "= 1.0.2"
+depends "php", "= 1.1.8"
 depends "chef-php-extra"
 
 %w{ ubuntu, debian, centos, redhat, fedora }.each do |os|
