@@ -49,11 +49,3 @@ task :prepare_sandbox do
   mkdir_p sandbox_path
   cp_r Dir.glob("{#{files.join(',')}}"), sandbox_path
 end
-
-# RSpec - this needs to be last!
-require 'rspec/core/rake_task'
-desc 'Run specs'
-RSpec::Core::RakeTask.new do |t|
-  Rake::Task[:prepare_sandbox].invoke
-  t.pattern = File.join(sandbox_path, 'spec/**/*_spec.rb')
-end
