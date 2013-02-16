@@ -34,7 +34,7 @@ action :install_packages do
     cwd new_resource.project_path
     user "root"
     command "php composer.phar install"
-    only_if ::File.exists?("#{new_resource.project_path}/composer.json")
+    not_if !::File.exists?("#{new_resource.project_path}/composer.json")
   end
   new_resource.updated_by_last_action(true)
 end
