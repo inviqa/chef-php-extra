@@ -5,11 +5,6 @@ description      "Installs/Configures additional PHP modules, PEAR and PECL pack
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.2.0"
 
-depends "git", "= 1.0.0"
-depends "yum", "= 0.8.0"
-depends "apt", "= 1.8.4"
-depends "php", "= 1.1.8"
-
 %w{ ubuntu, debian, centos, redhat, fedora }.each do |os|
   supports os
 end
