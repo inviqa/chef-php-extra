@@ -1,9 +1,16 @@
+name             "chef-php-extra"
 maintainer       "Alistair Stead"
 maintainer_email "alistair.stead@inviqa.com"
 license          "Apache 2.0"
 description      "Installs/Configures additional PHP modules, PEAR and PECL packages"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.2.0"
+
+depends "git"
+depends "yum"
+depends "apt"
+depends "php"
+depends "chef-php-extra"
 
 %w{ ubuntu, debian, centos, redhat, fedora }.each do |os|
   supports os
