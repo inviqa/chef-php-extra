@@ -20,7 +20,7 @@
 include_recipe "chef-php-extra::pear"
 
 channels = [
-    "pear.symfony-project.com", 
+    "pear.symfony-project.com",
     "components.ez.no"
 ]
 
@@ -35,7 +35,7 @@ pu = chef_php_extra_pear_channel "pear.phpunit.de" do
 end
 
 chef_php_extra_pear "PHPUnit" do
-    version "3.6.11"
+    version node['phpunit']['version']
     channel pu.channel_name
     action :install
 end
