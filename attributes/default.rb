@@ -35,3 +35,5 @@ default['xcache']['readonly_protection'] = 'Off'
 default['xcache']['mmap_path'] = '/dev/zero'
 default['xcache']['optimizer'] = 'Off'
 default['xcache']['coverager'] = 'Off'
+
+default['phpunit']['version'] = '3.6.11'
