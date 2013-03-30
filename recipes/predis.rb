@@ -19,6 +19,16 @@
 
 include_recipe "git"
 
+# build dependencies
+package "make" do
+  action :install
+end
+
+# phpize command
+package "php5-dev" do
+  action :install
+end
+
 directory "/tmp/phpredis" do
   owner "root"
   group "root"
