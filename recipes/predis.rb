@@ -29,7 +29,7 @@ end
 
 git "/tmp/phpredis" do
   repository "git://github.com/nicolasff/phpredis.git"
-  revision "master"
+  revision node['phpredis']['revision']
   action :sync
   not_if "php -m | grep redis"
 end
