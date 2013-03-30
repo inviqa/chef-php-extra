@@ -56,7 +56,6 @@ end
 
 template "#{node['php']['ext_conf_dir']}/redis.ini" do
   source "extension.ini.erb"
-  cookbook "chef-php-extra"
   owner "root"
   group "root"
   mode "0644"
