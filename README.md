@@ -142,6 +142,10 @@ Installs and configures xdebug so that it provides more details stack traces for
 
 Installs the latest build of Zend Framework 1.x as system wide resource with PEAR.
 
+## twig-ext
+
+Installs the php twig extension configure and make install from source after a checkout from GitHub from the master branch
+
 # Usage
 
 You can select any of the recipes to be executed directly referencing them from this cookbook.
