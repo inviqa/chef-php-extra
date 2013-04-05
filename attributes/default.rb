@@ -37,3 +37,5 @@ default['xcache']['optimizer'] = 'Off'
 default['xcache']['coverager'] = 'Off'
 
 default['phpunit']['version'] = '3.6.11'
+
+default['phpredis']['revision'] = 'master'
