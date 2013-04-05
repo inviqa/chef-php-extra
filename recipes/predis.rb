@@ -19,6 +19,16 @@
 
 include_recipe "git"
 
+# build dependencies
+package "make" do
+  action :install
+end
+
+# phpize command
+package "php5-dev" do
+  action :install
+end
+
 directory "/tmp/phpredis" do
   owner "root"
   group "root"
@@ -29,7 +39,7 @@ end
 
 git "/tmp/phpredis" do
   repository "git://github.com/nicolasff/phpredis.git"
-  revision "master"
+  revision node['phpredis']['revision']
   action :sync
   not_if "php -m | grep redis"
 end
@@ -46,7 +56,6 @@ end
 
 template "#{node['php']['ext_conf_dir']}/redis.ini" do
   source "extension.ini.erb"
-  cookbook "chef-php-extra"
   owner "root"
   group "root"
   mode "0644"
