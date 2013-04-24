@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-php-extra
-# Recipe:: PHPUnit
+# Recipe:: module_memcache
 #
 # Copyright 2012, Alistair Stead
 #
@@ -17,25 +17,27 @@
 # limitations under the License.
 #
 
-include_recipe "chef-php-extra::pear"
+include_recipe "chef-php-extra"
 
-channels = [
-    "pear.symfony-project.com",
-    "components.ez.no"
-]
-
-channels.each do |chan|
-  chef_php_extra_pear_channel chan do
-    action :discover
-  end
+if node['php']['ius'] == "5.4"
+      packages = %w{ php54-memcache }
+elsif node['php']['ius'] == "5.3"
+      packages = %w{ php53u-memcache }
+else
+      packages = %w{ php-memcache }
 end
 
-pu = chef_php_extra_pear_channel "pear.phpunit.de" do
-  action :discover
-end
+pkgs = value_for_platform(
+  [ "centos", "redhat", "fedora", "amazon", "scientific" ] => {
+    "default" => packages
+  },
+  [ "debian", "ubuntu" ] => {
+    "default" => %w{ php5-memcache }
+  }
+)
 
-chef_php_extra_pear "PHPUnit" do
-    version node['phpunit']['version']
-    channel pu.channel_name
+pkgs.each do |pkg|
+  package pkg do
     action :install
+  end
 end

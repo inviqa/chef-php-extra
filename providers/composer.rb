@@ -1,7 +1,7 @@
 # Cookbook Name:: chef-php-extra
 # Provider:: composer
 #
-# Copyright 2012, Marcello Duarte
+# Copyright 2012, Marcello Duarte, Alistair Stead
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,9 @@ action :install_composer do
   remote_file "#{new_resource.project_path}/composer.phar" do
     source "http://getcomposer.org/composer.phar"
     mode "0774"
-    not_if !::File.exists?("#{new_resource.project_path}/composer.phar")
+    not_if do
+      ::File.exists?("#{new_resource.project_path}/composer.phar")
+    end
   end
   new_resource.updated_by_last_action(true)
 end
@@ -34,7 +36,9 @@ action :install_packages do
     cwd new_resource.project_path
     user "root"
     command "php composer.phar install"
-    only_if ::File.exists?("#{new_resource.project_path}/composer.json")
+    only_if do
+      ::File.exists?("#{new_resource.project_path}/composer.json")
+    end
   end
   new_resource.updated_by_last_action(true)
 end

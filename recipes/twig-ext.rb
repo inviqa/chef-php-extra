@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-php-extra
-# Recipe:: predis
+# Recipe:: twig-ext
 #
 # Copyright 2012, Alistair Stead
 #
@@ -16,20 +16,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+#
+# Created by liuggio aka Giulio De Donato
+#
 
 include_recipe "git"
 
-# build dependencies
-package "make" do
-  action :install
-end
-
-# phpize command
-package "php5-dev" do
-  action :install
-end
-
-directory "/tmp/phpredis" do
+directory "/tmp/twig" do
   owner "root"
   group "root"
   mode "0755"
@@ -37,30 +30,31 @@ directory "/tmp/phpredis" do
 end
 
 
-git "/tmp/phpredis" do
-  repository "git://github.com/nicolasff/phpredis.git"
-  revision node['phpredis']['revision']
+git "/tmp/twig" do
+  repository "git://github.com/fabpot/Twig.git"
+  revision "master"
   action :sync
-  not_if "php -m | grep redis"
+  not_if "php -m | grep twig"
 end
 
-bash "make & install phpredis" do
-  cwd "/tmp/phpredis"
+bash "make & install twig" do
+  cwd "/tmp/twig/ext/twig"
   code <<-EOF
   phpize
   ./configure
   make && make install
   EOF
-  not_if "php -m | grep redis"
+  not_if "php -m | grep twig"
 end
 
-template "#{node['php']['ext_conf_dir']}/redis.ini" do
+template "#{node['php']['ext_conf_dir']}/twig.ini" do
   source "extension.ini.erb"
+  cookbook "chef-php-extra"
   owner "root"
   group "root"
   mode "0644"
-  variables(:name => "redis", :directives => [])
-  not_if "php -m | grep redis"
+  variables(:name => "twig", :directives => [])
+  not_if "php -m | grep twig"
 end
 
 
