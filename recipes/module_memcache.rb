@@ -20,11 +20,11 @@
 include_recipe "chef-php-extra"
 
 if node['php']['ius'] == "5.4"
-      packages = %w{ php54-memcache }
+      packages = %w{ php54-pecl-memcache }
 elsif node['php']['ius'] == "5.3"
-      packages = %w{ php53u-memcache }
+      packages = %w{ php53u-pecl-memcache }
 else
-      packages = %w{ php-memcache }
+      packages = %w{ php-pecl-memcache }
 end
 
 pkgs = value_for_platform(
