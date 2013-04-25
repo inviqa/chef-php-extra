@@ -11,6 +11,7 @@ default['xdebug']['profiler_enable'] = 0
 default['xdebug']['profiler_output_dir'] = "/tmp/cachegrind"
 
 default['php']['ius'] = "5.3"
+default['php']['memory_limit'] = "128M"
 
 default['xcache']['zend_extension'] = '/usr/lib64/php/modules/xcache.so'
 
