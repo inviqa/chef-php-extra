@@ -25,8 +25,15 @@ package "make" do
 end
 
 # phpize command
-package "php5-dev" do
-  action :install
+case node['platform']
+when "redhat", "centos", "fedora", "amazon", "scientific"
+  package "php53u-devel" do
+    action :install
+  end
+when "ubuntu", "debian"
+  package "php5-dev" do
+    action :install
+  end
 end
 
 directory "/tmp/phpredis" do
