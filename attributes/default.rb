@@ -1,3 +1,4 @@
+default['xdebug']['disable_extension'] = false
 default['xdebug']['cli_color'] = 1
 default['xdebug']['scream'] = 0
 default['xdebug']['remote_enable'] = "On"
