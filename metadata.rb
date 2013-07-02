@@ -12,7 +12,7 @@ depends "apt", ">= 1.8.4"
 depends "php", "= 1.1.8"
 depends "chef-php-extra"
 
-%w{ ubuntu, debian, centos, redhat, fedora }.each do |os|
+%w{ ubuntu debian centos redhat fedora }.each do |os|
   supports os
 end
 
