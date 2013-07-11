@@ -25,9 +25,7 @@ package "make" do
 end
 
 # phpize command
-package "php5-dev" do
-  action :install
-end
+include_recipe "chef-php-extra::module_dev"
 
 directory "/tmp/phpredis" do
   owner "root"
