@@ -2,6 +2,7 @@ default['xdebug']['cli_color'] = 1
 default['xdebug']['scream'] = 0
 default['xdebug']['remote_enable'] = "On"
 default['xdebug']['remote_autostart'] = 0
+default['xdebug']['remote_host'] = 'localhost'
 default['xdebug']['remote_mode'] = "req"
 default['xdebug']['remote_connect_back'] = 1
 default['xdebug']['idekey'] = "macgdbp"
