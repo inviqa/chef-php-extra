@@ -25,16 +25,7 @@ package "make" do
 end
 
 # phpize command
-case node['platform']
-when "redhat", "centos", "fedora", "amazon", "scientific"
-  package "php53u-devel" do
-    action :install
-  end
-when "ubuntu", "debian"
-  package "php5-dev" do
-    action :install
-  end
-end
+include_recipe "chef-php-extra::module_dev"
 
 directory "/tmp/phpredis" do
   owner "root"
