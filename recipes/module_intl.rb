@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-php-extra
-# Recipe:: PHP_CodeSniffer
+# Recipe:: module_imagick
 #
 # Copyright 2012, Alistair Stead
 #
@@ -17,9 +17,27 @@
 # limitations under the License.
 #
 
-include_recipe "chef-php-extra::pear"
+include_recipe "chef-php-extra"
 
-chef_php_extra_pear "PHP_CodeSniffer" do
-  version "1.3.5"
-  action :install
+if node['php']['ius'] == "5.4"
+  packages = %w{ php54-intl }
+elsif node['php']['ius'] == "5.3"
+  packages = %w{ php53u-intl }
+else
+  packages = %w{ php-intl }
+end
+
+pkgs = value_for_platform(
+  [ "centos", "redhat", "fedora" ] => {
+    "default" => packages
+  },
+  [ "debian", "ubuntu" ] => {
+    "default" => %w{ php5-intl }
+  }
+)
+
+pkgs.each do |pkg|
+  package pkg do
+    action :install
+  end
 end
