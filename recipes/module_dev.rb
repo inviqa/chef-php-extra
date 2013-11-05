@@ -28,7 +28,7 @@ else
 end
 
 pkgs = value_for_platform(
-  [ "centos", "redhat", "fedora" ] => {
+  [ "centos", "redhat", "fedora", "amazon", "scientific ] => {
     "default" => packages
   },
   [ "debian", "ubuntu" ] => {
