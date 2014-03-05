@@ -9,7 +9,7 @@ version          "0.4.0"
 depends "git", ">= 1.0.0"
 depends "yum", ">= 0.8.0"
 depends "apt", ">= 1.8.4"
-#depends "php", "= 1.1.8"
+depends "php", "= 1.1.8"
 #depends "chef-php-extra"
 
 %w{ ubuntu debian centos redhat fedora }.each do |os|
