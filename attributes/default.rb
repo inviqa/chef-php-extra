@@ -4,11 +4,13 @@ default['xdebug']['remote_enable'] = "On"
 default['xdebug']['remote_autostart'] = 0
 default['xdebug']['remote_mode'] = "req"
 default['xdebug']['remote_connect_back'] = 1
+default['xdebug']['remote_port'] = 9000
 default['xdebug']['idekey'] = "macgdbp"
 default['xdebug']['file_link_format'] = "txmt://open?url=file://%f&line=%1"
 default['xdebug']['profiler_enable_trigger'] = 0
 default['xdebug']['profiler_enable'] = 0
 default['xdebug']['profiler_output_dir'] = "/tmp/cachegrind"
+default['xdebug']['max_nesting_level'] = 100
 
 default['php']['ius'] = "5.3"
 
