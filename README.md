@@ -28,10 +28,12 @@ The following Opscode cookbooks are dependencies:
 
 * `['xdebug']['cli_color']` = Enable cli colour output, defaults to `1`.
 * `['xdebug']['scream']` = Enable removal for of `@` error suppression functionality, defaults to `0`.
+* `['xdebug']['max_nesting_level']` = Defaults to `100`.
 * `['xdebug']['remote_enable']` = Defaults to `On`.
 * `['xdebug']['remote_autostart']` = Defaults to `0`.
 * `['xdebug']['remote_mode']` = Defaults to `req`.
 * `['xdebug']['remote_connect_back']` = Defaults to `1`.
+* `['xdebug']['remote_port']` = Defaults to `9000`.
 * `['xdebug']['idekey']` = Defaults to `macgdbp`.
 * `['xdebug']['file_link_format']` = Defaults to `txmt://open?url=file://%f&line=%1`.
 * `['xdebug']['profiler_enable_trigger']` = Defaults to `0`.
