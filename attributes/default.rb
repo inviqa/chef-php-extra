@@ -10,7 +10,7 @@ default['xdebug']['file_link_format'] = "txmt://open?url=file://%f&line=%1"
 default['xdebug']['profiler_enable_trigger'] = 0
 default['xdebug']['profiler_enable'] = 0
 default['xdebug']['profiler_output_dir'] = "/tmp/cachegrind"
-default['xdebug']['max_nesting_level'] = 100
+default['xdebug']['max_nesting_level'] = 500
 
 default['php']['ius'] = "5.3"
 
