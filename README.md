@@ -94,10 +94,6 @@ Installs php5_xml as it is a commonly used module that is not part of the Opscod
 
 Upgrades PEAR using PEAR.
 
-## PHP_CodeBrowser
-
-Installs PHP_CodeBrowser with PEAR so that is can be used to generate a GUI to interact with the source code and static code analysis results.
-
 ## PHP_CodeSniffer
 
 Installs PHP_CodeSniffer using PEAR with the standard sniffs PEAR and Zend.
@@ -110,21 +106,9 @@ Installs PHP_Depend with PEAR so that it can be used in Jenkins.
 
 Installs PHP_PMD with PEAR so that it can be used in Jenkins.
 
-## phpcpd
-
-Installs phpcpd which allows you to identify and duplicate code within your PHP project.
-
 ## PhpDocumentor
 
 Installs PhpDocumentor so that you can generate API documentation for you code.
-
-## phploc
-
-Installs phploc so that you can gather statistics about your PHP code.
-
-## PHPUnit
-
-Installs PHPUnit and dependencies for unit testing your PHP code.
 
 ## predis
 
