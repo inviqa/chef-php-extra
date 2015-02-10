@@ -20,8 +20,5 @@
 include_recipe "chef-php-extra"
 include_recipe "chef-php-extra::PHP_CodeSniffer"
 include_recipe "chef-php-extra::PHP_PMD"
-include_recipe "chef-php-extra::phpcpd"
 include_recipe "chef-php-extra::PhpDocumentor"
-include_recipe "chef-php-extra::phploc"
-include_recipe "chef-php-extra::PHPUnit"
 include_recipe "chef-php-extra::xdebug"
