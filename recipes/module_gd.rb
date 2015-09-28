@@ -19,7 +19,9 @@
 
 include_recipe "chef-php-extra"
 
-if node['php']['ius'] == "5.4"
+if node['php']['ius'] == "5.5"
+  packages = %w{ php55u-gd }
+elsif node['php']['ius'] == "5.4"
   packages = %w{ php54-gd }
 elsif node['php']['ius'] == "5.3"
   packages = %w{ php53u-gd }
