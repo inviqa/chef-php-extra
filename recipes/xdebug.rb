@@ -17,24 +17,36 @@
 # limitations under the License.
 #
 
-# Needed for phpize, which pecl needs
-include_recipe "chef-php-extra::module_dev"
+use_pear = false
 
-# php_pear "xdebug" do
-#   action :install
-# end
-
-if platform?(%w{debian ubuntu})
-  package "php5-xdebug"
-elsif platform?(%w{centos redhat fedora amazon scientific})
-  php_pear "xdebug" do
-    action :install
-  end
+case node['php']['ius']
+  when '5.5' then package 'php55u-xdebug'
+  when '5.4' then use_pear = true
+  when '5.3' then use_pear = true
+  else
+    use_pear = true
 end
 
-template "#{node['php']['ext_conf_dir']}/xdebug.ini" do
-  mode "0644"
-  variables(
-    :params => node['xdebug']
-  )
+if use_pear
+  # Needed for phpize, which pecl needs
+  include_recipe "chef-php-extra::module_dev"
+
+  # php_pear "xdebug" do
+  #   action :install
+  # end
+
+  if platform?(%w{debian ubuntu})
+    package "php5-xdebug"
+  elsif platform?(%w{centos redhat fedora amazon scientific})
+    php_pear "xdebug" do
+      action :install
+    end
+  end
+
+  template "#{node['php']['ext_conf_dir']}/xdebug.ini" do
+    mode "0644"
+    variables(
+      :params => node['xdebug']
+    )
+  end
 end
