@@ -21,7 +21,9 @@
 
 include_recipe "chef-php-extra"
 
-if node['php']['ius'] == "5.5"
+if node['php']['ius'] == "5.6"
+      packages = %w{ php56u-mcrypt }
+elsif node['php']['ius'] == "5.5"
       packages = %w{ php55u-mcrypt }
 elsif node['php']['ius'] == "5.4"
       packages = %w{ php54-mcrypt }
@@ -46,7 +48,7 @@ pkgs.each do |pkg|
   end
 end
 
-if node['php']['ius'] != "5.5"
+if not ["5.5", "5.6"].include?(node['php']['ius'])
   template "#{node['php']['ext_conf_dir']}/mcrypt.ini" do
     mode "0644"
   end

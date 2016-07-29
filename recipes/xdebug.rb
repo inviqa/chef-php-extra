@@ -20,6 +20,7 @@
 use_pear = false
 
 case node['php']['ius']
+  when '5.6' then package 'php56u-xdebug'
   when '5.5' then package 'php55u-xdebug'
   when '5.4' then use_pear = true
   when '5.3' then use_pear = true

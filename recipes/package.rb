@@ -2,7 +2,9 @@ if node['php']['ius'] != false and platform?("redhat", "centos", "fedora", "amaz
   include_recipe "yum::ius"
 end
 
-if node['php']['ius'] == "5.5"
+if node['php']['ius'] == "5.6"
+  centos_packages = %w{ php56u php56u-devel php56u-cli php56u-pear }
+elsif node['php']['ius'] == "5.5"
   centos_packages = %w{ php55u php55u-devel php55u-cli php55u-pear }
 elsif node['php']['ius'] == "5.4"
   centos_packages = %w{ php54 php54-devel php54-cli php54-pear }
