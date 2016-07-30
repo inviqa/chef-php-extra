@@ -18,7 +18,12 @@
 #
 
 include_recipe "chef-php-extra"
-if node['php']['ius'] == "5.4"
+
+if node['php']['ius'] == "5.6"
+  packages = %w{ php56u-pecl-imagick }
+elsif node['php']['ius'] == "5.5"
+  packages = %w{ php55u-pecl-imagick }
+elsif node['php']['ius'] == "5.4"
   packages = %w{ php54-pecl-imagick }
 elsif node['php']['ius'] == "5.3"
   packages = %w{ php53u-pecl-imagick }
