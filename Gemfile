@@ -1,4 +1,4 @@
-source :rubygems
-gem 'chef'#, "~> 10.16.4"
+source 'https://rubygems.org'
+gem 'chef', "~> 11.0"
 gem 'foodcritic'
 gem 'rake'
