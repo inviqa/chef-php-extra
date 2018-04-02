@@ -29,6 +29,7 @@ The following Opscode cookbooks are dependencies:
 * `['xdebug']['cli_color']` = Enable cli colour output, defaults to `1`.
 * `['xdebug']['scream']` = Enable removal for of `@` error suppression functionality, defaults to `0`.
 * `['xdebug']['remote_enable']` = Defaults to `On`.
+* `['xdebug']['remote_host']` = Defaults to `localhost`.
 * `['xdebug']['remote_autostart']` = Defaults to `0`.
 * `['xdebug']['remote_mode']` = Defaults to `req`.
 * `['xdebug']['remote_connect_back']` = Defaults to `1`.
@@ -135,7 +136,7 @@ Installs the php twig extension configure and make install from source after a c
 You can select any of the recipes to be executed directly referencing them from this cookbook.
 
     chef-php-extra::xdebug
-    
+
 If you are setting up a development environment you can use the single recipe that will add all the standard tools that may be used during development of projects
 
     chef-php-extra::development
