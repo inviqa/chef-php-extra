@@ -9,7 +9,7 @@ version          "0.4.2"
 depends "git", ">= 1.0.0"
 depends "yum", ">= 0.8.0"
 depends "apt", ">= 1.8.4"
-depends "php", "= 1.1.8"
+depends "php", ">= 1.1.8"
 
 %w{ ubuntu debian centos redhat fedora }.each do |os|
   supports os
@@ -17,6 +17,7 @@ end
 
 recipe "chef-php-extra", "No default install"
 recipe "chef-php-extra::development", "Install development tools"
+recipe "chef-php-extra::module_apcu", "Install additional module APCu"
 recipe "chef-php-extra::module_dev", "Install additional module"
 recipe "chef-php-extra::module_gd", "Install additional module"
 recipe "chef-php-extra::module_imagick", "Install additional module"
