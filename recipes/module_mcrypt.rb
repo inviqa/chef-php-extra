@@ -17,9 +17,13 @@
 # limitations under the License.
 #
 
+
+
 include_recipe "chef-php-extra"
 
-if node['php']['ius'] == "5.4"
+if node['php']['ius'] == "5.5"
+      packages = %w{ php55u-mcrypt }
+elsif node['php']['ius'] == "5.4"
       packages = %w{ php54-mcrypt }
 elsif node['php']['ius'] == "5.3"
       packages = %w{ php53u-mcrypt }
@@ -42,6 +46,8 @@ pkgs.each do |pkg|
   end
 end
 
-template "#{node['php']['ext_conf_dir']}/mcrypt.ini" do
-  mode "0644"
+if node['php']['ius'] != "5.5"
+  template "#{node['php']['ext_conf_dir']}/mcrypt.ini" do
+    mode "0644"
+  end
 end
